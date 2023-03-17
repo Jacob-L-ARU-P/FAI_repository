@@ -1,0 +1,41 @@
+Agent Types:
+Neural Networks
+Finite State Machines
+Utility-Based Agent
+Learning Agent
+
+-------------------------------------------------
+
+I, Robot
+
+AI agents/FSM driving the robot
+
+Positronic brain abstracted as goal-based agent
+
+Care about the ai agents and finite-state machines
+driving the robot body through the environment.
+
+Learning Agent, Utility Agent
+
+-------------------------------------------------
+
+Atlas Robot:
+
+Model-based agent
+Utility-based agent
+- Not yet using a learning agent? -
+Movement Templates
+Trajectory Optimization
+Template deviation/solution flexability
+
+-------------------------------------------------
+
+How realistic it is?
+Based on own knwoledge, what ai theories they're using?
+
+-------------------------------------------------
+
+next friday, - Friday 24th March - first 1000 words
+Does not include code, or references
+
+Presentation
