@@ -1,0 +1,83 @@
+using System;
+
+enum Percept { Clean, Dirty }
+enum Action { Suck, NoOp }
+
+class ModelBasedReflexAgent
+{
+    static bool[,] model = new bool[5, 5];
+
+    static void Main(string[] args)
+    {
+        // Initialize the model with all squares dirty
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 5; j++)
+            {
+                model[i, j] = true;
+            }
+        }
+
+        Percept currentPercept = GetPercept();
+        while (AllSquaresClean() == false)
+        {
+            Action action = GetAction(currentPercept);
+            ExecuteAction(action);
+            UpdateModel(action);
+            currentPercept = GetPercept();
+        }
+    }
+
+    static Percept GetPercept()
+    {
+        // Code to get the current percept from the environment
+        // For this example, we'll return a random value
+        Random rand = new Random();
+        return (Percept)rand.Next(0, 2);
+    }
+
+    static Action GetAction(Percept currentPercept)
+    {
+        switch (currentPercept)
+        {
+            case Percept.Dirty:
+                return Action.Suck;
+            case Percept.Clean:
+                return Action.NoOp;
+            default:
+                return Action.NoOp;
+        }
+    }
+
+    static void ExecuteAction(Action action)
+    {
+        switch (action)
+        {
+            case Action.Suck:
+                Console.WriteLine("Sucking dirt");
+                break;
+            case Action.NoOp:
+                Console.WriteLine("No operation");
+                break;
+        }
+    }
+
+    static void UpdateModel(Action action)
+    {
+        if (action == Action.Suck)
+        {
+            // Code to update the model based on the current action
+            // For this example, we'll mark the current square as clean
+            int x = 0, y = 0;
+            // Get the current location of the agent
+            // ...
+
+            model[x, y] = false;
+        }
+    }
+
+    static bool AllSquaresClean()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j

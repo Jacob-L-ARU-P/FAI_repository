@@ -7,4 +7,6 @@ https://en.wikipedia.org/wiki/I,_Robot_(film)
 https://www.livescience.com/49007-history-of-artificial-intelligence.html
 - Brief History of AI Quote
 
+https://www.bostondynamics.com/atlas
+- Boston Dynamics Atlas Research Platform (Robot)
 

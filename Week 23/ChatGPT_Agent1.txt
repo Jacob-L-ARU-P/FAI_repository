@@ -1,0 +1,52 @@
+using System;
+
+enum Percept { Clean, Dirty }
+enum Action { Suck, NoOp }
+
+class SimpleReflexAgent
+{
+    static void Main(string[] args)
+    {
+        Percept currentPercept = GetPercept();
+        while (currentPercept != Percept.Clean)
+        {
+            Action action = GetAction(currentPercept);
+            ExecuteAction(action);
+            currentPercept = GetPercept();
+        }
+    }
+
+    static Percept GetPercept()
+    {
+        // Code to get the current percept from the environment
+        // For this example, we'll return a random value
+        Random rand = new Random();
+        return (Percept)rand.Next(0, 2);
+    }
+
+    static Action GetAction(Percept currentPercept)
+    {
+        switch (currentPercept)
+        {
+            case Percept.Dirty:
+                return Action.Suck;
+            case Percept.Clean:
+                return Action.NoOp;
+            default:
+                return Action.NoOp;
+        }
+    }
+
+    static void ExecuteAction(Action action)
+    {
+        switch (action)
+        {
+            case Action.Suck:
+                Console.WriteLine("Sucking dirt");
+                break;
+            case Action.NoOp:
+                Console.WriteLine("No operation");
+                break;
+        }
+    }
+}

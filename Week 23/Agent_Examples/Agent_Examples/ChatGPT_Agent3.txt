@@ -1,0 +1,80 @@
+using System;
+using System.Collections.Generic;
+
+class DeliveryLocation
+{
+    public int X { get; set; }
+    public int Y { get; set; }
+    public bool PackageDelivered { get; set; }
+
+    public DeliveryLocation(int x, int y)
+    {
+        X = x;
+        Y = y;
+        PackageDelivered = false;
+    }
+}
+
+class GoalBasedAgent
+{
+    static List<DeliveryLocation> deliveryLocations = new List<DeliveryLocation>();
+
+    static void Main(string[] args)
+    {
+        // Initialize the delivery locations
+        deliveryLocations.Add(new DeliveryLocation(1, 2));
+        deliveryLocations.Add(new DeliveryLocation(3, 4));
+        deliveryLocations.Add(new DeliveryLocation(5, 6));
+
+        while (AllPackagesDelivered() == false)
+        {
+            DeliveryLocation nextGoal = GetNextGoal();
+            List<Action> plan = GetPlan(nextGoal);
+            ExecutePlan(plan);
+            UpdateGoals(nextGoal);
+        }
+    }
+
+    static DeliveryLocation GetNextGoal()
+    {
+        // Code to select the next goal to work on
+        // For this example, we'll return the first undelivered package
+        foreach (DeliveryLocation location in deliveryLocations)
+        {
+            if (location.PackageDelivered == false)
+            {
+                return location;
+            }
+        }
+
+        return null;
+    }
+
+    static List<Action> GetPlan(DeliveryLocation nextGoal)
+    {
+        // Code to calculate the most efficient route to the destination
+        // For this example, we'll return a simple plan to move to the destination
+        List<Action> plan = new List<Action>();
+        plan.Add(Action.MoveTo(nextGoal.X, nextGoal.Y));
+        return plan;
+    }
+
+    static void ExecutePlan(List<Action> plan)
+    {
+        foreach (Action action in plan)
+        {
+            // Code to execute the next action in the plan
+            Console.WriteLine("Executing action: " + action);
+        }
+    }
+
+    static void UpdateGoals(DeliveryLocation nextGoal)
+    {
+        // Code to update the goals as the agent moves through the city
+        // For this example, we'll mark the package as delivered
+        nextGoal.PackageDelivered = true;
+    }
+
+    static bool AllPackagesDelivered()
+    {
+        foreach (Delivery
